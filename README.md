@@ -4,24 +4,36 @@
   <h3 align="center">type-4-me</h3>
 
   <p align="center">
-    Small Python app that types pasted code into another window.
+    Windows desktop helper that types prepared text or code into another app.
     <br />
     <a href="https://github.com/hsmith56/type-4-me">View Project</a>
     ·
     <a href="https://github.com/hsmith56/type-4-me/issues">Report Bug</a>
   </p>
+
+  [![MIT License][license-shield]][license-url]
+  [![Python][python-shield]][python-url]
 </div>
 
 ## About The Project
 
-type-4-me is a lightweight Tkinter desktop tool for typing text/code into a focused target window. It can format Python or JSON, manage multiple tabs, control typing speed, and stop when focus changes.
+type-4-me is a small Tkinter app for pasting code into one window, then typing it into another window with native Windows keystrokes. It is useful when direct paste is unavailable, blocked, or unreliable.
+
+Current capabilities:
+
+- Tabbed text editor with line numbers
+- Python and JSON formatting
+- Adjustable characters-per-second typing speed
+- Native Windows `SendInput` keystrokes
+- Optional smart-tab support for editors that auto-indent
+- Stop button plus focus-change cancellation
 
 ### Built With
 
-* Python
-* Tkinter
-* Windows `SendInput`
-* uv
+- [![Python][python-shield]][python-url]
+- Tkinter
+- Windows `SendInput`
+- [uv](https://docs.astral.sh/uv/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -29,9 +41,9 @@ type-4-me is a lightweight Tkinter desktop tool for typing text/code into a focu
 
 ### Prerequisites
 
-* Windows
-* Python 3.14+
-* [uv](https://docs.astral.sh/uv/)
+- Windows
+- Python 3.14 or newer
+- [uv](https://docs.astral.sh/uv/)
 
 ### Installation
 
@@ -45,58 +57,89 @@ uv sync
 
 ## Usage
 
-Run app:
+Start app:
 
 ```sh
 uv run type-4-me
 ```
 
-Or:
+Alternate entry point:
 
 ```sh
 uv run python main.py
 ```
 
-Basic flow:
+Typical workflow:
 
 1. Paste text or code into editor.
-2. Choose `python` or `json` if formatting is needed.
-3. Set typing speed with CPS slider.
-4. Click **Start Typing**.
-5. Focus target window within 3 seconds.
-6. Click **Stop** or switch focus to cancel.
+2. Select `python` or `json` when formatting is needed.
+3. Click **Format** if needed.
+4. Set typing speed with CPS slider.
+5. Enable **target supports smart-tab** only when target editor auto-indents after blocks.
+6. Click **Start Typing**.
+7. Focus target window within 3 seconds.
+8. Click **Stop** or switch focus to cancel typing.
 
-Shortcuts:
+Keyboard shortcuts:
 
-* `Ctrl+N` — new tab
-* `Ctrl+W` — close tab
-* `Ctrl+Tab` — next tab
-* `Ctrl+Shift+Tab` — previous tab
+- `Ctrl+N`: New tab
+- `Ctrl+W`: Close tab
+- `Ctrl+Tab`: Next tab
+- `Ctrl+Shift+Tab`: Previous tab
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Notes
+
+- Native typing works on Windows only.
+- Non-ASCII characters are not supported by current keystroke mapper.
+- Tabs are converted to four spaces before typing.
+- Typing stops if foreground window changes after typing begins.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Development
+
+Run app during development:
+
+```sh
+uv run python main.py
+```
+
+Install dependencies from lockfile:
+
+```sh
+uv sync
+```
+
+No test suite is currently defined in project metadata.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
 
 - [x] Tabbed editor
-- [x] Python/JSON formatting
+- [x] Python and JSON formatting
 - [x] Adjustable typing speed
+- [x] Focus-change cancellation
 - [ ] Package Windows executable
+- [ ] Add automated tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
 
-1. Fork project
-2. Create branch (`git checkout -b feature/my-feature`)
-3. Commit changes (`git commit -m "Add my feature"`)
-4. Push branch (`git push origin feature/my-feature`)
-5. Open pull request
+1. Fork project.
+2. Create feature branch: `git checkout -b feature/my-feature`
+3. Commit changes: `git commit -m "Add my feature"`
+4. Push branch: `git push origin feature/my-feature`
+5. Open pull request.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,3 +148,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Project Link: [https://github.com/hsmith56/type-4-me](https://github.com/hsmith56/type-4-me)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
+[license-url]: LICENSE
+[python-shield]: https://img.shields.io/badge/Python-3.14+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white
+[python-url]: https://www.python.org/
